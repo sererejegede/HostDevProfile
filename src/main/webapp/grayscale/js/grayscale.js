@@ -60,6 +60,12 @@ $("#hideModal").click(function (){
     $.ajax({
         url : "Main",
         type : "post",
+        beforeSend: function () {
+            $("#spin").html("<i class='fa fa-spinner fa-spin'></i>");
+        },
+        complete: function () {
+            $("#spin").html("");
+        },
         data : {username: username,
                 password: password,
                 first: VarHolder.first,

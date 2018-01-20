@@ -181,7 +181,7 @@
                       <form id="loginForm" action="Main" method="POST">
                           <span>Username:  </span><input class="input-group input-padding" id="username" type="text" name="userName" placeholder="Enter Username" required="true" /><br>
                           <span>Password:  </span><input class="input-group input-padding" id="password" type="password" name="password" placeholder="Enter Password" required="true" /><br>
-                        <input class="btn btn-success" id="forLogin" type="button" value="Submit">  <button class="btn btn-warning" id="forLoginClear" type="reset" value="Reset">Reset</button>
+                          <button class="btn btn-success" id="forLogin" type="button">Submit <i id="spin"></i></button>  <button class="btn btn-warning" id="forLoginClear" type="reset" value="Reset">Reset</button>
                       </form>
                     </div>   
                      <h6 class="dispa" id="dispR"></h6>

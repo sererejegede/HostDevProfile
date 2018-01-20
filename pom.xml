@@ -8,10 +8,13 @@
     <packaging>war</packaging>
 
     <name>HostDevProfile</name>
+    <url>http://maven.apache.org</url>
 
     <properties>
-        <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+<!--        <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>-->
     </properties>
     
     <dependencies>
@@ -51,6 +54,11 @@
                 </configuration>
             </plugin>
             <plugin>
+                <groupId>com.google.appengine</groupId>
+                <artifactId>appengine-maven-plugin</artifactId>
+                <version>1.9.61</version>
+            </plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
                 <version>2.6</version>
@@ -75,6 +83,24 @@
                     </execution>
                 </executions>
             </plugin>
+<!--            <plugin>
+C:\Users\TOSIN\Documents\NetBeansProjects\HostDevProfile
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <executions>
+                    <phase>package</phase>
+                    <goals>
+                        <goal>single</goal>
+                    </goals>
+                    <configuration>
+                        <archive>
+                            <manifest>
+                                <mainClass></mainClass>
+                            </manifest>
+                        </archive>
+                    </configuration>
+                </executions>
+            </plugin>-->
         </plugins>
     </build>
 
