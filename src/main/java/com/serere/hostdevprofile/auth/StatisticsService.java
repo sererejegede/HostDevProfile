@@ -3,6 +3,7 @@ package com.serere.hostdevprofile.auth;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import com.serere.hostdevprofile.Constants;
 
 public class StatisticsService {
     private int count;
@@ -20,12 +21,16 @@ public class StatisticsService {
             Connection connection = com.serere.hostdevprofile.DBConnection.getConnection();
             Statement statement = com.serere.hostdevprofile.DBConnection.cStatement();
             
-//            String sql_count = "SELECT COUNT(*) AS 'count' FROM dev_credentials WHERE firstLang = '"+language+"'";
-            String sql_beta = "SELECT COUNT(*) AS 'count' FROM dev_credentials GROUP BY "+lang+" ORDER BY COUNT(*) DESC";
+//            String sql_beta = "SELECT COUNT(*) AS 'count' FROM dev_credentials GROUP BY "+lang+" ORDER BY COUNT(*) DESC";
+//            ResultSet resul = statement.executeQuery(sql_beta);
+//            while(resul.next()){
+//            languagesCount.add(resul.getInt("count"));
+//            }
+            
+            String sql_beta = "SELECT "+lang+" FROM `choice` ORDER BY firstLang DESC";
             ResultSet resul = statement.executeQuery(sql_beta);
             while(resul.next()){
-            languagesCount.add(resul.getInt("count"));
-//            count = resul.getInt("count");
+            languagesCount.add(resul.getInt(lang));
             }
           
         resul.close();
@@ -38,19 +43,23 @@ public class StatisticsService {
     }
     
     
-    public List<String> languageReturn(String lang){
+    public List<String> languageReturn(){
         try {
             Connection connection = com.serere.hostdevprofile.DBConnection.getConnection();
             Statement statement = com.serere.hostdevprofile.DBConnection.cStatement();
             
-//            String sql_count = "SELECT COUNT(*) AS 'count' FROM dev_credentials WHERE firstLang = '"+language+"'";
-            String sql1 = "SELECT "+lang+" FROM dev_credentials GROUP BY firstLang ORDER BY COUNT("+lang+") DESC";
-            
-            ResultSet res = statement.executeQuery(sql1);
-            
+//            String sql1 = "SELECT "+lang+" FROM dev_credentials GROUP BY firstLang ORDER BY COUNT("+lang+") DESC";
+//            
+//            ResultSet res = statement.executeQuery(sql1);
+//            
+//            while(res.next()){
+//                languagesList.add(res.getString("firstLang"));
+//            }
+
+            String sql = "SELECT prog_name FROM choice ORDER BY firstLang DESC";
+            ResultSet res = statement.executeQuery(sql);
             while(res.next()){
-                languagesList.add(res.getString("firstLang"));
-//            countLanguage = res.getString("firstLang");
+                languagesList.add(res.getString("prog_name"));
             }
         res.close();
         statement.close();

@@ -8,6 +8,8 @@ public interface Constants {
     String DB_URL = "jdbc:mysql://localhost/registration";
     String DRIVER = "com.mysql.jdbc.Driver";
     String[] LANGUAGES = {"Java","FORTRAN","Python","C#","PHP","C++","C","JavaScript","Swift","Arduino","Ruby","MATLAB","HTML","Perl","SQL"};
+    String[] TABLE1 = {"first", "second", "third"};
+    String[] TABLE2 = {"firstLang", "secondLang", "thirdLang"};
     
 }
 

@@ -1,0 +1,8 @@
+com\serere\hostdevprofile\DBConnection.class
+com\serere\hostdevprofile\Test.class
+com\serere\hostdevprofile\auth\DataAddService.class
+com\serere\hostdevprofile\auth\StatisticsService.class
+com\serere\hostdevprofile\Main.class
+com\serere\hostdevprofile\Constants.class
+com\serere\hostdevprofile\auth\LoginService.class
+com\serere\hostdevprofile\auth\RegistrationService.class
