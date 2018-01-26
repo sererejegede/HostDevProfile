@@ -45,22 +45,7 @@ public class Main extends HttpServlet {
         
         
         StatisticsService statisticsService = new StatisticsService();
-        List<String> countList = statisticsService.languageReturn();
-//                List<String> countList2 = statisticsService.languageReturn("secondLang");
-//                List<String> countList3 = statisticsService.languageReturn("thirdLang");
-        List<Integer> counts = statisticsService.counter("firstLang");
-        List<Integer> counts2 = statisticsService.counter("secondLang");
-        List<Integer> counts3 = statisticsService.counter("thirdLang");
 
-        String countL = gson.toJson(countList);
-//                String countL = gson.toJson(countList);
-//                String countL2 = counts2.toString();
-//                String countL3 = counts3.toString();
-        String counted = gson.toJson(counts);
-        String counted2 = gson.toJson(counts2);
-        String counted3 = gson.toJson(counts3);
-
-        String forSending = "[" + countL + "," + counted + "," + counted2 + "," + counted3 + "]";
         
              //////////        LOGIN         ////////
                     
@@ -84,6 +69,17 @@ public class Main extends HttpServlet {
                     countService.put();
 
                 }
+                List<String> countList = statisticsService.languageReturn();
+                List<Integer> counts = statisticsService.counter("firstLang");
+                List<Integer> counts2 = statisticsService.counter("secondLang");
+                List<Integer> counts3 = statisticsService.counter("thirdLang");
+
+                String countL = gson.toJson(countList);
+                String counted = gson.toJson(counts);
+                String counted2 = gson.toJson(counts2);
+                String counted3 = gson.toJson(counts3);
+
+                String forSending = "[" + countL + "," + counted + "," + counted2 + "," + counted3 + "]"; 
                 response.setContentType("application/json");
                 response.setCharacterEncoding("UTF-8");
                 response.getWriter().write(forSending);
@@ -129,6 +125,17 @@ public class Main extends HttpServlet {
                     countService.put();
 
                 } 
+                        List<String> countList = statisticsService.languageReturn();
+        List<Integer> counts = statisticsService.counter("firstLang");
+        List<Integer> counts2 = statisticsService.counter("secondLang");
+        List<Integer> counts3 = statisticsService.counter("thirdLang");
+
+        String countL = gson.toJson(countList);
+        String counted = gson.toJson(counts);
+        String counted2 = gson.toJson(counts2);
+        String counted3 = gson.toJson(counts3);
+
+        String forSending = "[" + countL + "," + counted + "," + counted2 + "," + counted3 + "]"; 
                 response.setContentType("application/json");
                 response.setCharacterEncoding("UTF-8");
                 response.getWriter().write(forSending);

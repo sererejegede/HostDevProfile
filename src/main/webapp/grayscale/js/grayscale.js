@@ -73,29 +73,22 @@ $("#hideModal").click(function (){
                 third: VarHolder.third
             },
         success : function(result){
-//            window.location.reload();
-
-
             if (typeof result === "object"){
+//                alert(result);
                 var countL = result[0];
-//                var countL2 = result[1];
-//                var countL3 = result[2];
                 var counted = result[1];
                 var counted2 = result[2];
                 var counted3 = result[3];
                 
-//                alert(counted);
                 var list = $("#list");
                 var $create = $('<ul>').addClass("list-group").appendTo(list);
-//                $("<li>").text("List Item").appendTo($create);
+
                 var hj = 14;
                 var u = 29;
                 $.each(countL, function(index, item){
                   var $jag = $("<li>").html(item).addClass("list-group-item lis").appendTo($create); 
                   hj++;
                   u++;
-//                  console.log(hj);
-//                   $("<span>").html(counted[index]+" "+counted2[hj]+" "+counted3[u]).addClass("badge badge-info float-right").appendTo($jag);
                    
                    $("<span>").html(counted[index]).addClass("badge badge-success float-right").appendTo($jag);
                    $("<span>").html(counted2[hj]).addClass("badge badge-warning float-right").prependTo($jag);

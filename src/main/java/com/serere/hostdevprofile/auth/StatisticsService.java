@@ -21,12 +21,6 @@ public class StatisticsService {
             Connection connection = com.serere.hostdevprofile.DBConnection.getConnection();
             Statement statement = com.serere.hostdevprofile.DBConnection.cStatement();
             
-//            String sql_beta = "SELECT COUNT(*) AS 'count' FROM dev_credentials GROUP BY "+lang+" ORDER BY COUNT(*) DESC";
-//            ResultSet resul = statement.executeQuery(sql_beta);
-//            while(resul.next()){
-//            languagesCount.add(resul.getInt("count"));
-//            }
-            
             String sql_beta = "SELECT "+lang+" FROM `choice` ORDER BY firstLang DESC";
             ResultSet resul = statement.executeQuery(sql_beta);
             while(resul.next()){
@@ -47,14 +41,6 @@ public class StatisticsService {
         try {
             Connection connection = com.serere.hostdevprofile.DBConnection.getConnection();
             Statement statement = com.serere.hostdevprofile.DBConnection.cStatement();
-            
-//            String sql1 = "SELECT "+lang+" FROM dev_credentials GROUP BY firstLang ORDER BY COUNT("+lang+") DESC";
-//            
-//            ResultSet res = statement.executeQuery(sql1);
-//            
-//            while(res.next()){
-//                languagesList.add(res.getString("firstLang"));
-//            }
 
             String sql = "SELECT prog_name FROM choice ORDER BY firstLang DESC";
             ResultSet res = statement.executeQuery(sql);
