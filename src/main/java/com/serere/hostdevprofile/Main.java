@@ -24,7 +24,6 @@ public class Main extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-//        response.getWriter().write("Testing Main");
                
         PrintWriter out = response.getWriter();
         Gson gson = new Gson();
@@ -43,52 +42,37 @@ public class Main extends HttpServlet {
         String userName = request.getParameter("usernameR");
         String passWord = request.getParameter("passwordR");
         
+        DataAddService dataAdd = new DataAddService();
+        CountService countService = new CountService();
         
         StatisticsService statisticsService = new StatisticsService();
-
+        
         
              //////////        LOGIN         ////////
-                    
-        if (name != null && password != null) {
+        if ("".equals(name) && "".equals(password)) {
+            out.write("You must fill all fields");
+        }
+        else if (name != null && password != null) {
             
         LoginService loginService = new LoginService();
         int result = loginService.authenticate(name, password);
-        String firstName = loginService.firstName(name);
         
-        
-
-                
        
         switch (result) {
             case 1:
-                if (!"".equals(first)){
-
-                    DataAddService dataAdd = new DataAddService();
+                if (!"".equals(first) && first != null){
+                    
                     dataAdd.addLanguage(first, second, third, name);
-                    CountService countService = new CountService();
                     countService.put();
-
                 }
-                List<String> countList = statisticsService.languageReturn();
-                List<Integer> counts = statisticsService.counter("firstLang");
-                List<Integer> counts2 = statisticsService.counter("secondLang");
-                List<Integer> counts3 = statisticsService.counter("thirdLang");
-
-                String countL = gson.toJson(countList);
-                String counted = gson.toJson(counts);
-                String counted2 = gson.toJson(counts2);
-                String counted3 = gson.toJson(counts3);
-
-                String forSending = "[" + countL + "," + counted + "," + counted2 + "," + counted3 + "]"; 
+                 
                 response.setContentType("application/json");
                 response.setCharacterEncoding("UTF-8");
-                response.getWriter().write(forSending);
-//                response.setContentType("text/plain");
-//                response.setCharacterEncoding("UTF-8");
-//                response.getWriter().write(forSending);
+                response.getWriter().write(statisticsService.finalAnswer());
 
                 break;
             case 2:
+                
                 response.setContentType("text/plain");
                 response.getWriter().write("Incorrect Password!");
                 break;
@@ -103,42 +87,28 @@ public class Main extends HttpServlet {
         }
         
         //////////        REGISTRATION         ////////
-        
-        if (fname != null && lname != null) {
+        if ("".equals(fname) || "".equals(lname) || "".equals(userName) || "".equals(passWord)) {
+            out.write("You must fill all fields");
+        }
+        else if (fname != null && lname != null) {
             
         
         RegistrationService registrationService = new RegistrationService();
         int register = registrationService.registerer(fname, lname, userName, passWord);
+        
             if (register == 0) {
                 response.setContentType("text/plain");
                 response.setCharacterEncoding("UTF-8");
-                response.getWriter().write("User already exists");
+                response.getWriter().write("User already exist");
             }else if (register == 1) {
-//                response.setContentType("text/plain");
-//                response.setCharacterEncoding("UTF-8");
-//                response.getWriter().write("Please Login to show result");
-                if (!"".equals(first)){
-
-                    DataAddService dataAdd = new DataAddService();
-                    dataAdd.addLanguage(first, second, third, name);
-                    CountService countService = new CountService();
+                if (!"".equals(first) && first != null){
+                    
+                    dataAdd.addLanguage(first, second, third, userName);
                     countService.put();
-
-                } 
-                        List<String> countList = statisticsService.languageReturn();
-        List<Integer> counts = statisticsService.counter("firstLang");
-        List<Integer> counts2 = statisticsService.counter("secondLang");
-        List<Integer> counts3 = statisticsService.counter("thirdLang");
-
-        String countL = gson.toJson(countList);
-        String counted = gson.toJson(counts);
-        String counted2 = gson.toJson(counts2);
-        String counted3 = gson.toJson(counts3);
-
-        String forSending = "[" + countL + "," + counted + "," + counted2 + "," + counted3 + "]"; 
+                }
                 response.setContentType("application/json");
                 response.setCharacterEncoding("UTF-8");
-                response.getWriter().write(forSending);
+                response.getWriter().write(statisticsService.finalAnswer());
             }
         }
         

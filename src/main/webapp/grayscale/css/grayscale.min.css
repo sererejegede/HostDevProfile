@@ -8,11 +8,13 @@
 .table th{text-align: left; width: 1000px}
 .table td{width: 300px}
 .regModal{display: none}
+.hide{display: none; background-color: #17a2b8; border: none; border-radius: 5px}
+.hide:hover{background-color: #007bff}
 .rowlink .col-sm-6 { color: #ffffff; border: none; width: 400px; padding: 0 0 0 0}
 .rowlink button{width: 100%; height: 100%; padding: 20px 0}
 /*.rowlink .col-sm-6:hover{background-color: white;color: #007bff}*/
 .lis{color: black; text-align: left; padding-top: 5px; padding-bottom: 5px}
-label{text-align: left; color: black}
+label{text-align: left; color: #17a2b8}
 .float-right{float:right!important}
 .list-group{width: 300px}
 /*.collapse .navbar-nav .nav-item a:hover{background-color: blue; cursor: grabbing}*/

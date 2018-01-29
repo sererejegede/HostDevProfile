@@ -37,9 +37,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
-<!--            <li class="nav-item">
-                <a class=" hov nav-link js-scroll-trigger" data-toggle="modal" data-target="#myModal">Login</a>
-            </li>-->
+            <li class="nav-item">
+                <a class=" hov nav-link btn btn-primary hide" id="home">Back</a>
+            </li>
 <!--            <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#download">Download</a>
             </li>
@@ -159,6 +159,9 @@
                </div>
                 <div class="col-2"></div>
               </div>
+            <div class="row">
+                
+            </div>
                 
               <!----------Modal**********-->
 
@@ -183,19 +186,25 @@
                         <div class='tab-content'>
                         <div id="loginModal">
                       <form id="loginForm" action="Main" method="POST">
-                          <span>Username:  </span><input class="input-group input-padding" id="username" type="text" name="userName" placeholder="Enter Username" required="true" /><br>
-                          <span>Password:  </span><input class="input-group input-padding" id="password" type="password" name="password" placeholder="Enter Password" required="true" /><br>
+                          <label for="username">Username</label>
+                          <input class="input-group input-padding" id="username" type="text" name="userName"/><br>
+                          <label for="password">Password</label>
+                          <input class="input-group input-padding" id="password" type="password" name="password"/><br>
                           <button class="btn btn-success" id="forLogin" type="button">Submit <i id="spin"></i></button>  
                       </form>
                     </div>   
                      <h6 class="dispa" id="dispR"></h6>
                      <div id="regModal" class="regModal">
                       <form id="" action="Login" method="POST">
-                        <input class="input-group input-padding" id="fname" type="text" name="fname" placeholder="First Name" required="true"/><br>
-                        <input class="input-group input-padding" id="lname" type="text" name="lname" placeholder="Last Name" /><br>
-                        <input class="input-group input-padding" id="usernameR" type="text" name="username" placeholder="Username" required="true"/><br>
-                        <input class="input-group input-padding" id="passwordR" type="password" name="password" placeholder="Password" required="true"/><br>
-                        <div class="div1"> <button class="btn btn-success" id="forReg" type="button" value="Submit">Submit</button>  </div>
+                        <label for="fname">First Name</label>
+                        <input class="input-group input-padding" id="fname" type="text" name="fname"/><br>
+                        <label for="lname">Last Name</label>
+                        <input class="input-group input-padding" id="lname" type="text" name="lname"/><br>
+                        <label for="usernameR">Username</label>
+                        <input class="input-group input-padding" id="usernameR" type="text" name="username"/><br>
+                        <label for="passwordR">Password</label>
+                        <input class="input-group input-padding" id="passwordR" type="password" name="password"/><br>
+                        <div class="div1"> <button class="btn btn-success" id="forReg" type="button" value="Submit">Submit <i id="spin"></i></button>  </div>
                       </form>
                      </div>
                      </div>       

@@ -50,14 +50,18 @@ var VarHolder = {};
 $("#hideModal").click(function (){
 //    $("#mymodal").;
 });
+$("#modal-pop").click(function(){
+    VarHolder.first = $("#first").val();
+    VarHolder.second = $("#second").val();
+    VarHolder.third = $("#third").val();
+});
 
    $("#forLogin").click(function(e) {
        e.preventDefault();
         var username = $("#username").val();
         var password = $("#password").val();
-        
      
-    $.ajax({
+   $.ajax({
         url : "Main",
         type : "post",
         beforeSend: function () {
@@ -94,6 +98,7 @@ $("#hideModal").click(function (){
                    $("<span>").html(counted2[hj]).addClass("badge badge-warning float-right").prependTo($jag);
                    $("<span>").html(counted3[u]).addClass("badge badge-danger float-right").prependTo($jag);
                 });
+                $("#home").css("display","block");
                 $("#loginDiv").replaceWith(list);
                 $("#myModal").modal('hide');
                 $("#disp").html("");
@@ -109,30 +114,21 @@ $("#hideModal").click(function (){
      });
      
    });
-   
+   $("#username").focusin(function(){
+            $("#disp").html("");
+    });
+   $("#password").focusin(function(){
+            $("#disp").html("");
+   });
+   $("#home").click(function(){
+       location.reload();
+   });
    $("#forLoginClear").click(function(){
       $("#disp").html(""); 
       $("#dispR").html(""); 
    });
    
-   //*************************** Submit modal tweaking *****************************//
-   
-   $("#modal-pop").click(function(e){
-       e.preventDefault();
-       if ($("#first").val() === "-Select Option-"){
-           
-           $("#err-disp").html("Choose a language");
-           $("#myModal").modal('hide');
-   } else VarHolder.first = $("#first").val();
-   if ($("#second").val() === "-Select Option-"){
-           $("#err-disp").html("Choose a language");
-   } else VarHolder.second = $("#second").val();
-   if ($("#third").val() === "-Select Option-"){
-           $("#err-disp").html("Choose a language");
-   } else VarHolder.third = $("#third").val();
-//       VarHolder.second = $("#second").val();
-//       VarHolder.third = $("#third").val();
-   });
+
    
    
    //********************Registration Ajax Call*********************//
@@ -146,6 +142,12 @@ $("#hideModal").click(function (){
        $.ajax({
            url: "Main",
            type: "post",
+           beforeSend: function () {
+            $("#spin").html("<i class='fa fa-spinner fa-spin'></i>");
+           },
+           complete: function () {
+            $("#spin").html("");
+           },
            data: {
                firstname: firstname,
                lastname: lastname,
@@ -156,19 +158,14 @@ $("#hideModal").click(function (){
                third: VarHolder.third
            },
            success: function(print){
-               
-//            window.location.reload();
 
 
             if (typeof print === "object"){
                 var countL = print[0];
-//                var countL2 = result[1];
-//                var countL3 = result[2];
                 var counted = print[1];
                 var counted2 = print[2];
                 var counted3 = print[3];
                 
-//                alert(counted);
                 var list = $("#list");
                 var $create = $('<ul>').addClass("list-group").appendTo(list);
                 var hj = 14;
@@ -196,6 +193,18 @@ $("#hideModal").click(function (){
            }
        });
    });
+       $("#fname").focusin(function(){
+            $("#dispR").html("");
+       });
+       $("#lname").focusin(function(){
+            $("#dispR").html("");
+       });
+       $("#usernameR").focusin(function(){
+            $("#dispR").html("");
+       });
+       $("#passwordR").focusin(function(){
+            $("#dispR").html("");
+       });
 
 $("#forRegClear").click(function(){
     $("#dispR").html("");
